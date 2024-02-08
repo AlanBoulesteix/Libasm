@@ -1,20 +1,23 @@
 section .text
 	global ft_strcmp
-	global ft_strlen
 
 ft_strcmp:
-	xor rax,rax
+	xor rdx, rdx
 	jmp ft_loop
 
 ft_loop:
-	mov cl, [rdi + rax]
-	mov dl, [rsi + rax]
-	sub cl,dl
-	inc rax
+	mov cl, byte [rdi + rdx]
+	sub cl, byte [rsi + rdx]
+	inc rdx
+	cmp cl,0
+	je check_end
 	jne end_loop
-	
+
+check_end:
+	cmp byte [rdi + rdx],0
+	je end_loop
+	jmp ft_loop
 
 end_loop:
-	mov rax, cl
+	movzx rax, cl
 	ret
-
