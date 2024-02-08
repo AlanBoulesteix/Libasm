@@ -6,7 +6,7 @@
 /*   By: aboulest <aboulest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:05:03 by aboulest          #+#    #+#             */
-/*   Updated: 2024/02/08 08:27:40 by aboulest         ###   ########.fr       */
+/*   Updated: 2024/02/08 08:41:44 by aboulest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,14 @@ void	ft_strcpyTest(char *str) {
 
 int	main(int ac, char **av)
 {
-
+	(void)ac;
+	(void)av;
 	if (ac != 2)
 	{
-		printf("\033[1;31m%s\033[0m", "USE: libasm [string] ");
+		printf("\033[1;31m%s\033[0m", "USE: libasm [string]\n");
 		return (1);
 	}
-	ft_strelenTest(av[1]);
-	ft_strcpyTest(av[1]);
+	printf("strcmp return: %d\n", strcmp("abc", "abccccccccc"));
+	// ft_strelenTest(av[1]);
+	// ft_strcpyTest(av[1]);
 }
