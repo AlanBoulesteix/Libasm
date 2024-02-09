@@ -10,11 +10,16 @@ ft_loop:
 	sub cl, byte [rsi + rdx]
 	inc rdx
 	cmp cl,0
-	je check_end
 	jne end_loop
+	jmp ft_check_first_string
 
-check_end:
+ft_check_first_string:
 	cmp byte [rdi + rdx],0
+	je ft_check_second_string
+	jmp ft_loop
+
+ft_check_second_string:
+	cmp byte [rsi + rdx],0
 	je end_loop
 	jmp ft_loop
 
