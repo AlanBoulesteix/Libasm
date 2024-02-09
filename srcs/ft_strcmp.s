@@ -21,5 +21,5 @@ ft_check_strings:
 	jmp ft_loop
 
 end_loop:
-	movzx rax, cl
+	movsx rax, cl
 	ret

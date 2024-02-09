@@ -5,7 +5,9 @@ EXECBONUS = libasmExecBonus
 SRCS = $(addsuffix .s, \
 	ft_strlen \
 	ft_strcpy \
-	ft_strcmp)
+	ft_strcmp \
+	ft_write \
+	ft_read )
 
 OBJS = $(SRCS:%.s=srcs/.build/%.o)
 DEPS = $(SRCS:%.s=srcs/.build/%.d)

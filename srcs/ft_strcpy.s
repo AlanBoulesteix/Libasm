@@ -6,6 +6,7 @@ section .text
 ft_strcpy:
 	xor rax, rax
 	jmp loop_copy
+
 loop_copy:
 	cmp byte [rsi + rax],0
 	mov cl, [rsi + rax]
