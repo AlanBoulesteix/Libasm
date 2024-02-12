@@ -1,5 +1,4 @@
 ;char *strcpy(char *dest, const char *src);
-
 section .text
 	global ft_strcpy
 

@@ -1,7 +1,4 @@
 ;void ft_list_push_front(t_list **begin_list, void *data)
-;rdi -> begin_list
-;rsi -> data
-
 section .data
 	extern malloc
 	extern __errno_location
@@ -9,21 +6,22 @@ section .data
 section .text
 	global ft_list_push_front
 
-ft_list_push_front:
+ft_list_push_front:		;rdi -> begin_list ;rsi -> data
 	push rsp
+	push rdi
 	push rsi
-	mov rbx, rdi
 	mov rdi, 16
 	xor rax, rax
 	call malloc wrt ..plt
 	cmp rax, 0
 	je error_handler
 	pop rsi
+	pop rdi
 	pop rsp
 	mov [rax], rsi
-	mov rcx, [rbx]
+	mov rcx, [rdi]
 	mov [rax + 8], rcx
-	mov [rbx], rax
+	mov [rdi], rax
 	ret
 
 error_handler:

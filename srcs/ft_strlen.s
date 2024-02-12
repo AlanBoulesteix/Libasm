@@ -1,3 +1,4 @@
+;size_t		ft_strlen(const char *str)
 section .text
 	global ft_strlen
 
