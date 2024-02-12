@@ -6,13 +6,13 @@
 /*   By: aboulest <aboulest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:05:03 by aboulest          #+#    #+#             */
-/*   Updated: 2024/02/12 10:45:25 by aboulest         ###   ########.fr       */
+/*   Updated: 2024/02/12 12:17:29 by aboulest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libasm.h"
 
-void	ft_strelenTest(char *str)
+void	ft_strelen_test(char *str)
 {
 	size_t	len_og;
 	size_t	len_new;
@@ -25,33 +25,34 @@ void	ft_strelenTest(char *str)
 	printf("============================================\n\n");
 }
 
-void	ft_strcpyTest(char *str) {
+void	ft_strcpy_test(char *str)
+{
 	char	*dest;
 	char	*ft_dest;
 
-	dest = malloc(sizeof(*dest)*100);
-	if (!dest) 
+	dest = malloc(sizeof(*dest) * 100);
+	if (!dest)
 	{
-		printf("\033[1;31m%s\033[0m", "Malloc failed on ft_strcpyTest(dest)\n");
+		printf("\033[1;31m%s\033[0m", "Malloc failed on ft_strcpy_test(dest)\n");
 		return ;
 	}
-	ft_dest = malloc(sizeof(*ft_dest)*100);
-	if (!ft_dest) 
+	ft_dest = malloc(sizeof(*ft_dest) * 100);
+	if (!ft_dest)
 	{
-		printf("\033[1;31m%s\033[0m", "Malloc failed on ft_strcpyTest(dest)\n");
+		printf("\033[1;31m%s\033[0m", "Malloc failed on ft_strcpy_test(dest)\n");
 		return ;
 	}
 	printf("================= STRCPY ===================\n");
 	strcpy(dest, str);
 	printf("   strcpy: %s\n", dest);
 	ft_strcpy(ft_dest, str);
-	printf("ft_strcpy: %s\n", ft_dest);	
+	printf("ft_strcpy: %s\n", ft_dest);
 	printf("============================================\n\n");
 	free(dest);
 	free(ft_dest);
 }
 
-void	ft_strcmpTest(char *s1, char *s2)
+void	ft_strcmp_test(char *s1, char *s2)
 {
 	printf("================= STRCMP ====================\n");
 	printf("   strcmp return: %d\n", strcmp(s1, s2));
@@ -72,10 +73,9 @@ void	failed_ft_write_test(char *str)
 		printf("ret = %d -> Erreur : %s\n", ret, err);
 	}
 	printf("============================================\n\n");
-
 }
 
-void	ft_writeTest(char *str)
+void	ft_write_test(char *str)
 {
 	int		ret;
 
@@ -86,11 +86,12 @@ void	ft_writeTest(char *str)
 	printf("============================================\n\n");
 }
 
-void	ft_readTest()
+void	ft_read_test(void)
 {
 	int		ret;
 	char	buf[1000];
-	
+
+	bzero(buf, 1000);
 	printf("================= READ ====================\n");
 	ft_write(1, "Please enter something: ", 24);
 	ret = ft_read(0, buf, 1000);
@@ -102,7 +103,7 @@ void	ft_strdup_test(char *str)
 {
 	char	*real_dup;
 	char	*my_dup;
-	
+
 	printf("================= STRDUP ===================\n");
 	real_dup = strdup(str);
 	my_dup = ft_strdup(str);
@@ -122,11 +123,11 @@ int	main(int ac, char **av)
 		printf("\033[1;31m%s\033[0m", "USE: libasm [string]\n");
 		return (1);
 	}
-	ft_strelenTest(av[1]);
-	ft_strcpyTest(av[1]);
-	ft_strcmpTest(av[1], "abc");
+	ft_strelen_test(av[1]);
+	ft_strcpy_test(av[1]);
+	ft_strcmp_test(av[1], "abc");
 	failed_ft_write_test(av[1]);
-	ft_writeTest(av[1]);
-	ft_readTest();
+	ft_write_Test(av[1]);
+	ft_read_test();
 	ft_strdup_test(av[1]);
 }

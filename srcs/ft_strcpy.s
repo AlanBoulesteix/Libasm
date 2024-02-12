@@ -16,5 +16,5 @@ loop_copy:
 	jmp loop_copy
 
 end_loop:
-	mov rax, rsi
+	mov rax, rdi
 	ret

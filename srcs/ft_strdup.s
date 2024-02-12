@@ -1,24 +1,32 @@
-section .text
+;char		*ft_strdup(const char *s)
+section .data
 	extern malloc
 	extern ft_strlen
+	extern ft_strcpy
+	extern __errno_location
+
+section .text
 	global ft_strdup
 
 ft_strdup:
 	xor rax, rax
-	mov rcx, rdi
 	call ft_strlen
+	inc rax
+	mov r8, rdi
+	mov rdi, rax
 	call malloc wrt ..plt
-	mov rdx, rax
+	cmp rax, 0
+	jl error_handler
+	mov rdi, rax
+	mov rsi, r8
 	xor rax, rax
-	jmp dup_loop
+	call ft_strcpy
+	ret
 
-dup_loop:
-	mov r8, [rcx + rax]
-	mov [rdx + rax], r8
-	cmp r8, byte 0
-	jne dup_loop
-	jmp exit_loop
-
-exit_loop:
-	mov rax, rdx
+error_handler:
+	neg rax
+	mov rdi, rax
+	call __errno_location wrt ..plt
+	mov [rax], rdi
+	mov rax, -1
 	ret
