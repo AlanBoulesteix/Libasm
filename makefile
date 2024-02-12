@@ -8,10 +8,17 @@ SRCS = $(addsuffix .s, \
 	ft_strcmp \
 	ft_write \
 	ft_read \
-	ft_strdup)
+	ft_strdup \
+	ft_list_push_front )
+
+# BONUS = $(addsuffix .s, \
+# 	ft_atoi_base)
 
 OBJS = $(SRCS:%.s=srcs/.build/%.o)
 DEPS = $(SRCS:%.s=srcs/.build/%.d)
+
+# OBJSBONUS = $(BONUS:%.s=bonus/.build/%.o)
+# DEPSBONUS = $(BONUS:%.s=srcs/.build/%.d)
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3
@@ -38,12 +45,8 @@ srcs/.build/%.o: srcs/%.s
 exec: $(NAME)
 	$(CC) $(CFLAGS) -Iincludes main.c -L. -lasm -o $(EXEC)
 
-runbonus: exec
-	./$(EXEC)
-
 bonus: $(NAME)
 	$(CC) $(CFLAGS) -Iincludes mainbonus.c -L. -lasm -o $(EXECBONUS)
-	./$(EXECBONUS)
 
 clean:
 	$(RM) -rf srcs/.build
@@ -55,4 +58,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re runbonus run exec
+.PHONY: all clean fclean re exec

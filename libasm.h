@@ -6,7 +6,7 @@
 /*   By: aboulest <aboulest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:21:07 by aboulest          #+#    #+#             */
-/*   Updated: 2024/02/12 12:17:42 by aboulest         ###   ########.fr       */
+/*   Updated: 2024/02/12 14:03:08 by aboulest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,13 @@ int			ft_strcmp(const char *s1, const char *s2);
 ssize_t		ft_write(int fd, void *buf, size_t count);
 ssize_t		ft_read(int fd, void *buf, size_t count);
 char		*ft_strdup(const char *s);
+
+typedef struct s_list
+{
+	void			*data;
+	struct s_list	*next;
+}				t_list;
+
+void		ft_list_push_front(t_list **begin_list, void *data);
 
 #endif

@@ -12,13 +12,13 @@ ft_strdup:
 	xor rax, rax
 	call ft_strlen
 	inc rax
-	mov r8, rdi
+	mov r10, rdi
 	mov rdi, rax
 	call malloc wrt ..plt
 	cmp rax, 0
-	jl error_handler
+	je error_handler
 	mov rdi, rax
-	mov rsi, r8
+	mov rsi, r10
 	xor rax, rax
 	call ft_strcpy
 	ret
