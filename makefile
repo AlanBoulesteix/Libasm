@@ -7,7 +7,8 @@ SRCS = $(addsuffix .s, \
 	ft_strcpy \
 	ft_strcmp \
 	ft_write \
-	ft_read )
+	ft_read \
+	ft_strdup)
 
 OBJS = $(SRCS:%.s=srcs/.build/%.o)
 DEPS = $(SRCS:%.s=srcs/.build/%.d)

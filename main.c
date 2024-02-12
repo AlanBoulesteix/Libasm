@@ -6,7 +6,7 @@
 /*   By: aboulest <aboulest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:05:03 by aboulest          #+#    #+#             */
-/*   Updated: 2024/02/09 18:50:47 by aboulest         ###   ########.fr       */
+/*   Updated: 2024/02/12 10:45:25 by aboulest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,11 @@ void	ft_strelenTest(char *str)
 	printf("    len_og (strlen) = %ld\n", len_og);
 	printf("len_new (ft_strlen) = %ld\n", len_new);
 	printf("============================================\n\n");
-
 }
 
 void	ft_strcpyTest(char *str) {
 	char	*dest;
 	char	*ft_dest;
-	
 
 	dest = malloc(sizeof(*dest)*100);
 	if (!dest) 
@@ -44,12 +42,10 @@ void	ft_strcpyTest(char *str) {
 		return ;
 	}
 	printf("================= STRCPY ===================\n");
-	printf("[AVANT] strcpy: %s\n", dest);
 	strcpy(dest, str);
-	printf("[APRES] strcpy: %s\n", dest);
-	printf("[AVANT] ft_strcpy: %s\n", ft_dest);
+	printf("   strcpy: %s\n", dest);
 	ft_strcpy(ft_dest, str);
-	printf("[APRES] ft_strcpy: %s\n", ft_dest);	
+	printf("ft_strcpy: %s\n", ft_dest);	
 	printf("============================================\n\n");
 	free(dest);
 	free(ft_dest);
@@ -63,9 +59,25 @@ void	ft_strcmpTest(char *s1, char *s2)
 	printf("============================================\n\n");
 }
 
+void	failed_ft_write_test(char *str)
+{
+	int		ret;
+	char	*err;
+
+	printf("============== FAILED WRITE =================\n");
+	ret = ft_write(-5, str, ft_strlen(str));
+	if (ret < 0)
+	{
+		err = strerror(errno);
+		printf("ret = %d -> Erreur : %s\n", ret, err);
+	}
+	printf("============================================\n\n");
+
+}
+
 void	ft_writeTest(char *str)
 {
-	int	ret;
+	int		ret;
 
 	printf("================= WRITE ====================\n");
 	ret = ft_write(1, str, ft_strlen(str));
@@ -80,11 +92,25 @@ void	ft_readTest()
 	char	buf[1000];
 	
 	printf("================= READ ====================\n");
-	printf("Please enter something: ");
+	ft_write(1, "Please enter something: ", 24);
 	ret = ft_read(0, buf, 1000);
-	printf("buffer -> [%s] and ret = %d\n", buf, ret);
+	printf("\nbuffer -> [%s] and ret = %d\n", buf, ret);
 	printf("============================================\n\n");
+}
 
+void	ft_strdup_test(char *str)
+{
+	char	*real_dup;
+	char	*my_dup;
+	
+	printf("================= STRDUP ===================\n");
+	real_dup = strdup(str);
+	my_dup = ft_strdup(str);
+	printf("Real Dup return: %s\n", real_dup);
+	printf("  My Dup return: %s\n", my_dup);
+	printf("============================================\n\n");
+	free (real_dup);
+	free (my_dup);
 }
 
 int	main(int ac, char **av)
@@ -99,6 +125,8 @@ int	main(int ac, char **av)
 	ft_strelenTest(av[1]);
 	ft_strcpyTest(av[1]);
 	ft_strcmpTest(av[1], "abc");
+	failed_ft_write_test(av[1]);
 	ft_writeTest(av[1]);
-	// ft_readTest();
+	ft_readTest();
+	ft_strdup_test(av[1]);
 }
