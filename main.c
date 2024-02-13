@@ -6,7 +6,7 @@
 /*   By: aboulest <aboulest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:05:03 by aboulest          #+#    #+#             */
-/*   Updated: 2024/02/12 17:37:41 by aboulest         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:19:25 by aboulest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,14 @@ void	ft_list_push_front_test(char *str)
 	t_list	*tmp;
 	int		i;
 	
+	(void)str;
 	i = 0;
+	printf("[BEFORE] List size = %d\n", ft_list_size(node));
 	ft_list_push_front(&node, "This is the first node of my linked list");
 	ft_list_push_front(&node, "This is the second node of my linked list");
 	ft_list_push_front(&node, str);
+	printf("[AFTER] List size = %d\n", ft_list_size(node));
+	ft_list_sort(&node, &ft_strcmp);
 	while (node)
 	{
 		printf("Data in node #%d = %s\n", i, (char *)node->data);
@@ -141,13 +145,13 @@ int	main(int ac, char **av)
 		printf("\033[1;31m%s\033[0m", "USE: libasm [string]\n");
 		return (1);
 	}
-	ft_strelen_test(av[1]);
-	ft_strcpy_test(av[1]);
-	ft_strcmp_test(av[1], "abc");
-	failed_ft_write_test(av[1]);
-	ft_write_test(av[1]);
-	ft_read_test();
-	ft_strdup_test(av[1]);
+	// ft_strelen_test(av[1]);
+	// ft_strcpy_test(av[1]);
+	// ft_strcmp_test(av[1], "abc");
+	// failed_ft_write_test(av[1]);
+	// ft_write_test(av[1]);
+	// ft_read_test();
+	// ft_strdup_test(av[1]);
 
 	//BONUS
 	ft_list_push_front_test(av[1]);

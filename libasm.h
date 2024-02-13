@@ -6,7 +6,7 @@
 /*   By: aboulest <aboulest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:21:07 by aboulest          #+#    #+#             */
-/*   Updated: 2024/02/12 14:03:08 by aboulest         ###   ########.fr       */
+/*   Updated: 2024/02/13 16:41:01 by aboulest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,8 @@ typedef struct s_list
 }				t_list;
 
 void		ft_list_push_front(t_list **begin_list, void *data);
+int			ft_list_size(t_list *begin_list);
+void		ft_list_sort(t_list **begin_list, int (*cmp)());
+
 
 #endif

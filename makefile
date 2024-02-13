@@ -9,7 +9,9 @@ SRCS = $(addsuffix .s, \
 	ft_write \
 	ft_read \
 	ft_strdup \
-	ft_list_push_front )
+	ft_list_push_front \
+	ft_list_size \
+	ft_list_sort )
 
 # BONUS = $(addsuffix .s, \
 # 	ft_atoi_base)
